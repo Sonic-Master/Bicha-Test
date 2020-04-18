@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+    <div class="jumbotron"><h1 class="text-info">Sign Up</h1></div>
+    <div class="container">
+        <div class="form-control" id="signup">
+             <form action="{% url 'signup' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <h2 class="text-primary">Create New Account </h2>
+                    </div>
+                    <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Given Name " name="givenname">
+                    </div>
+                    <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sure Name " name="surename">     
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="abc@example.com" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="User Name ">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password1" placeholder="Password" class="form-control">
+                    </div>
+                    <div class="from-group">
+                        <input type="password" name="password2" placeholder="Confir password" class="form-control">
+                    </div>
+                    <div class="form-group"><br>
+                        <button type="submit" value="Signup" class="btn btn-primary">Signup</button>
+                
+                         <small>Login with </small>
+                         <a href=""><button type="submit" class="btn btn-success">Gmail</button></a>
+                         <a href=""><button type="submit" class="btn btn-success">FaceBook</button></a>
+                        
+                        {% for message in messages %}
+                        {{message}}
+                        {% endfor %}
+
+                    </div>
+             </form>
+
+            <a href="{% url 'login' %}">I have already created </a>
+                
+        </div>
+
+    </div>
+</body>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</html>

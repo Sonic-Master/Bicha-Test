@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+    <div class="jumbotron"><h1 class="text-success">Login</h1></div>
+    <div class="container">
+        <div class="form-control">
+            
+            <div class="container">
+                <small>Login with </small>
+            <a href=""><button type="submit" class="btn btn-success">Gmail</button></a>
+            <a href=""><button type="submit" class="btn btn-success">FaceBook</button></a>
+            <br>
+            </div>
+           <br>
+           <small>or</small> <br>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="User Name " class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="password" class="form-control">
+                </div>
+                <div class="form-group">
+                   <button type="submit" class="btn btn-primary" value="submit">Login</button>
+                   {% for message in messages %}
+                   {{message}}
+                   {% endfor %}
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</html>
